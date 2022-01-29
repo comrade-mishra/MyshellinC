@@ -1,1 +1,1 @@
-Lol will ever stop making these stupid C projects ?? 
+# Lol will ever stop making these stupid C projects ?? 
