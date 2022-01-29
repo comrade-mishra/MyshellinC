@@ -1,1 +1,1 @@
-/home/namanmishra/.config/nvim/init.vim Read Me file
+Lol will ever stop making these stupid C projects ?? 
