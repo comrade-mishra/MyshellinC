@@ -1,3 +1,29 @@
+#include <sys/wait.h>
+// waitpid() and associated macros
+
+#include <unistd.h>
+//chdir()
+//fork()
+//exec()
+//pid_t
+#include <stdlib.h>
+//malloc()
+//realloc()
+//free()
+//exit()
+//execvp()
+//EXIT_SUCCESS, EXIT_FAILUIRE
+#include <stdio.h>
+// fprintf
+// printf()
+// stderr
+// getcharr()
+// perror()
+#include <string.h>
+// strcmp()
+// strtok()
+
+
 void lsh_loop(){
 
     char *line;
