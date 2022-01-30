@@ -64,14 +64,39 @@ char *lsh_read_line(){
 }
 
 #define LSH_TOK_BUFSIZE 64
-#define LSH_TOKEN_DEL " \t\r\n\a"
+#define LSH_TOK_DELIM " \t\n\r\a"
 char **lsh_split_line(char *line){
-    
+    int bufsize = LSH_TOK_BUFSIZE;
+    int position = 0;
+    char **tokens = malloc(bufsize * sizeof(char*));
+    char *token;
 
+    if (!tokens){
+        fprintf(stderr, "Memory allocation error \n");
+        exit (EXIT_FAILURE);
+    }
 
+    token = strtok(line, LSH_TOK_DELIM);
+    while (token != NULL){
+        tokens[position] = token;
+        position++;
+
+        if (position >= bufsize){
+            bufsize += LSH_TOK_BUFSIZE;
+            tokens = realloc (tokens, bufsize * sizeof(char*));
+
+            if (!tokens){
+                fprintf(stderr, "Memory Allocation error \n");
+                exit (EXIT_FAILURE);
+            }
+                
+        }
+        token = strtok(NULL, LSH_TOK_DELIM);
+    }
+    tokens[position] = NULL;
+    return tokens;
 
 }
-
 
 
 void lsh_loop(){
@@ -83,7 +108,7 @@ void lsh_loop(){
     do{
         printf("> ");
         line = lsh_read_line();
-        args = lsh_split_line();
+        args = lsh_split_line(line);
         status = lsh_execute(args);
 
         free(line);
